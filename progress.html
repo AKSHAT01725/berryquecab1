@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Berry Que Cab | Work In Progress</title>
+  <meta name="description" content="Berry Que Cab - Work In Progress">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      text-align: center;
+      color: white;
+
+      /* Main dark background */
+      background:
+        radial-gradient(
+          circle at 20% 20%,
+          rgba(116, 40, 104, 0.35),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 80% 15%,
+          rgba(53, 38, 105, 0.35),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 75% 85%,
+          rgba(95, 32, 91, 0.3),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 20% 80%,
+          rgba(32, 45, 85, 0.35),
+          transparent 40%
+        ),
+        linear-gradient(
+          135deg,
+          #090b16 0%,
+          #111426 45%,
+          #080b16 100%
+        );
+
+      position: relative;
+    }
+
+    /* Soft blurred light in the background */
+    body::before {
+      content: "";
+      position: absolute;
+      width: 450px;
+      height: 450px;
+
+      background: rgba(25, 55, 190, 0.16);
+      border-radius: 50%;
+
+      filter: blur(120px);
+
+      top: -150px;
+      left: -120px;
+
+      animation: floatGlow 8s ease-in-out infinite alternate;
+    }
+
+    body::after {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+
+      background: rgba(65, 75, 150, 0.15);
+      border-radius: 50%;
+
+      filter: blur(130px);
+
+      bottom: -200px;
+      right: -150px;
+
+      animation: floatGlow2 10s ease-in-out infinite alternate;
+    }
+
+    /* Main content */
+    .container {
+      position: relative;
+      z-index: 2;
+
+      width: 90%;
+      max-width: 900px;
+
+      padding: 40px 20px;
+
+      animation: fadeIn 1.4s ease forwards;
+    }
+
+    /* Brand */
+    .brand {
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      font-weight: 700;
+
+      letter-spacing: -3px;
+      line-height: 1.05;
+
+      background: linear-gradient(
+        90deg,
+        #2b8eff,
+        #1b5ad9,
+        #ffffff
+      );
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+
+      text-shadow:
+        0 0 35px rgba(25, 52, 230, 0.15);
+    }
+
+    /* Work in progress */
+    .status {
+      margin-top: 22px;
+
+      font-size: clamp(0.9rem, 2vw, 1.2rem);
+
+      font-weight: 400;
+
+      letter-spacing: 8px;
+
+      text-transform: uppercase;
+
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    /* Decorative lines */
+    .status-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 22px;
+
+      margin-top: 20px;
+    }
+
+    .line {
+      width: 70px;
+      height: 2px;
+
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #ed2686
+      );
+
+      box-shadow:
+        0 0 12px rgba(237, 38, 134, 0.7);
+    }
+
+    .line.right {
+      background: linear-gradient(
+        90deg,
+        #ed2686,
+        transparent
+      );
+    }
+
+    /* Loading bar */
+    .loader {
+      width: min(320px, 70vw);
+      height: 7px;
+
+      margin: 42px auto 0;
+
+      border-radius: 50px;
+
+      background: rgba(255, 255, 255, 0.08);
+
+      border: 1px solid rgba(255, 255, 255, 0.15);
+
+      overflow: hidden;
+
+      box-shadow:
+        inset 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .loader::before {
+      content: "";
+
+      display: block;
+
+      width: 48%;
+      height: 100%;
+
+      border-radius: 50px;
+
+      background: linear-gradient(
+        90deg,
+        #1b1bd5,
+        #3b72ff
+      );
+
+      box-shadow:
+        0 0 15px rgba(255, 38, 145, 0.8),
+        0 0 30px rgba(255, 38, 145, 0.35);
+
+      animation: loading 2.2s ease-in-out infinite;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes loading {
+      0% {
+        transform: translateX(-110%);
+      }
+
+      50% {
+        transform: translateX(100%);
+      }
+
+      100% {
+        transform: translateX(210%);
+      }
+    }
+
+    @keyframes floatGlow {
+      from {
+        transform: translate(0, 0);
+      }
+
+      to {
+        transform: translate(100px, 70px);
+      }
+    }
+
+    @keyframes floatGlow2 {
+      from {
+        transform: translate(0, 0);
+      }
+
+      to {
+        transform: translate(-80px, -60px);
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+
+      .brand {
+        letter-spacing: -1.5px;
+      }
+
+      .status {
+        letter-spacing: 4px;
+        margin-top: 18px;
+      }
+
+      .status-wrapper {
+        gap: 12px;
+      }
+
+      .line {
+        width: 35px;
+      }
+
+      .loader {
+        margin-top: 32px;
+      }
+    }
+
+    /* Reduce animations for accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <h1 class="brand">
+      Berry Que Cab
+    </h1>
+
+    <div class="status-wrapper">
+
+      <span class="line"></span>
+
+      <p class="status">
+        Work In Progress
+      </p>
+
+      <span class="line right"></span>
+
+    </div>
+
+    <div class="loader"></div>
+
+  </main>
+
+</body>
+</html>
