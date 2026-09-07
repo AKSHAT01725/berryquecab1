@@ -1,336 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Berry Que Cab | Launching Soon</title>
+<meta name="description" content="Berry Que Cab — Vadodara's most trusted cab service. Our new site is launching soon. Call +91 95744 56015 for bookings.">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <title>Berry Que Cab | Work In Progress</title>
-  <meta name="description" content="Berry Que Cab - Work In Progress">
+<style>
+  :root {
+    --navy:       #f5f2ec;
+    --navy-2:     #faf8f4;
+    --navy-3:     #ffffff;
+    --gold:       #a8763f;
+    --gold-light: #c9974a;
+    --ice:        #221c14;
+    --mute:       #6b6258;
+    --line:       rgba(0,0,0,0.08);
+  }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body { width: 100%; height: 100%; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    font-family: 'Plus Jakarta Sans', Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: var(--ice);
+
+    background:
+      radial-gradient(ellipse 70% 55% at 75% 15%, rgba(168,118,63,0.12), transparent),
+      radial-gradient(ellipse 60% 70% at 10% 85%, rgba(168,118,63,0.07), transparent),
+      linear-gradient(160deg, #f5f2ec 0%, #faf8f4 50%, #ffffff 100%);
+
+    position: relative;
+  }
+
+  /* Soft warm glows in the background */
+  body::before {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+
+    background: rgba(168, 118, 63, 0.14);
+    border-radius: 50%;
+    filter: blur(120px);
+
+    top: -140px;
+    left: -110px;
+
+    animation: floatGlow 8s ease-in-out infinite alternate;
+  }
+
+  body::after {
+    content: "";
+    position: absolute;
+    width: 480px;
+    height: 480px;
+
+    background: rgba(201, 151, 74, 0.12);
+    border-radius: 50%;
+    filter: blur(130px);
+
+    bottom: -190px;
+    right: -140px;
+
+    animation: floatGlow2 10s ease-in-out infinite alternate;
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+
+    width: 90%;
+    max-width: 900px;
+    padding: 40px 20px;
+
+    animation: fadeIn 1.4s ease forwards;
+  }
+
+  .logo-mark {
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
+    margin: 0 auto 28px;
+    display: block;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.14);
+  }
+
+  /* Brand */
+  .brand {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.4rem, 6vw, 4.6rem);
+    font-weight: 700;
+
+    letter-spacing: -2px;
+    line-height: 1.05;
+
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--ice));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Launching soon */
+  .status {
+    margin-top: 20px;
+    font-size: clamp(0.85rem, 2vw, 1.1rem);
+    font-weight: 700;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .tagline {
+    margin-top: 14px;
+    font-size: 14.5px;
+    color: var(--mute);
+    line-height: 1.6;
+  }
+
+  /* Decorative lines */
+  .status-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 18px;
+  }
+
+  .line {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+    box-shadow: 0 0 12px rgba(168, 118, 63, 0.4);
+  }
+
+  .line.right {
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+
+  /* Loading bar */
+  .loader {
+    width: min(300px, 70vw);
+    height: 6px;
+    margin: 38px auto 0;
+    border-radius: 50px;
+    background: rgba(0,0,0,0.06);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.06);
+  }
+
+  .loader::before {
+    content: "";
+    display: block;
+    width: 48%;
+    height: 100%;
+    border-radius: 50px;
+
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    box-shadow: 0 0 16px rgba(168, 118, 63, 0.5);
+
+    animation: loading 2.2s ease-in-out infinite;
+  }
+
+  /* Contact */
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 40px;
+  }
+
+  .contact-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(168, 118, 63, 0.08);
+    border: 1px solid rgba(168, 118, 63, 0.25);
+    color: var(--gold);
+    padding: 11px 20px;
+    border-radius: 30px;
+    font-size: 13.5px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.25s ease;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .contact-pill:hover {
+    background: var(--gold);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(168, 118, 63, 0.35);
+  }
+
+  .contact-pill i { font-size: 13px; }
+
+  .footer-note {
+    position: absolute;
+    bottom: 22px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 12px;
+    color: var(--mute);
+    letter-spacing: 0.3px;
+  }
+
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes loading {
+    0%   { transform: translateX(-110%); }
+    50%  { transform: translateX(100%); }
+    100% { transform: translateX(210%); }
+  }
+
+  @keyframes floatGlow {
+    from { transform: translate(0, 0); }
+    to   { transform: translate(100px, 70px); }
+  }
+
+  @keyframes floatGlow2 {
+    from { transform: translate(0, 0); }
+    to   { transform: translate(-80px, -60px); }
+  }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    .brand { letter-spacing: -1px; }
+    .status { letter-spacing: 4px; margin-top: 16px; }
+    .status-wrapper { gap: 12px; }
+    .line { width: 32px; }
+    .loader { margin-top: 30px; }
+    .contact-row { gap: 9px; margin-top: 30px; }
+    .contact-pill { padding: 10px 15px; font-size: 12.5px; }
+    .footer-note { position: static; margin-top: 28px; }
+  }
+
+  /* Reduce animations for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
     }
-
-    html,
-    body {
-      width: 100%;
-      height: 100%;
-    }
-
-    body {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-
-      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
-      text-align: center;
-      color: white;
-
-      /* Main dark background */
-      background:
-        radial-gradient(
-          circle at 20% 20%,
-          rgba(116, 40, 104, 0.35),
-          transparent 35%
-        ),
-        radial-gradient(
-          circle at 80% 15%,
-          rgba(53, 38, 105, 0.35),
-          transparent 35%
-        ),
-        radial-gradient(
-          circle at 75% 85%,
-          rgba(95, 32, 91, 0.3),
-          transparent 35%
-        ),
-        radial-gradient(
-          circle at 20% 80%,
-          rgba(32, 45, 85, 0.35),
-          transparent 40%
-        ),
-        linear-gradient(
-          135deg,
-          #090b16 0%,
-          #111426 45%,
-          #080b16 100%
-        );
-
-      position: relative;
-    }
-
-    /* Soft blurred light in the background */
-    body::before {
-      content: "";
-      position: absolute;
-      width: 450px;
-      height: 450px;
-
-      background: rgba(25, 55, 190, 0.16);
-      border-radius: 50%;
-
-      filter: blur(120px);
-
-      top: -150px;
-      left: -120px;
-
-      animation: floatGlow 8s ease-in-out infinite alternate;
-    }
-
-    body::after {
-      content: "";
-      position: absolute;
-      width: 500px;
-      height: 500px;
-
-      background: rgba(65, 75, 150, 0.15);
-      border-radius: 50%;
-
-      filter: blur(130px);
-
-      bottom: -200px;
-      right: -150px;
-
-      animation: floatGlow2 10s ease-in-out infinite alternate;
-    }
-
-    /* Main content */
-    .container {
-      position: relative;
-      z-index: 2;
-
-      width: 90%;
-      max-width: 900px;
-
-      padding: 40px 20px;
-
-      animation: fadeIn 1.4s ease forwards;
-    }
-
-    /* Brand */
-    .brand {
-      font-size: clamp(2.8rem, 7vw, 6rem);
-      font-weight: 700;
-
-      letter-spacing: -3px;
-      line-height: 1.05;
-
-      background: linear-gradient(
-        90deg,
-        #2b8eff,
-        #1b5ad9,
-        #ffffff
-      );
-
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-
-      text-shadow:
-        0 0 35px rgba(25, 52, 230, 0.15);
-    }
-
-    /* Work in progress */
-    .status {
-      margin-top: 22px;
-
-      font-size: clamp(0.9rem, 2vw, 1.2rem);
-
-      font-weight: 400;
-
-      letter-spacing: 8px;
-
-      text-transform: uppercase;
-
-      color: rgba(255, 255, 255, 0.78);
-    }
-
-    /* Decorative lines */
-    .status-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      gap: 22px;
-
-      margin-top: 20px;
-    }
-
-    .line {
-      width: 70px;
-      height: 2px;
-
-      background: linear-gradient(
-        90deg,
-        transparent,
-        #ed2686
-      );
-
-      box-shadow:
-        0 0 12px rgba(237, 38, 134, 0.7);
-    }
-
-    .line.right {
-      background: linear-gradient(
-        90deg,
-        #ed2686,
-        transparent
-      );
-    }
-
-    /* Loading bar */
-    .loader {
-      width: min(320px, 70vw);
-      height: 7px;
-
-      margin: 42px auto 0;
-
-      border-radius: 50px;
-
-      background: rgba(255, 255, 255, 0.08);
-
-      border: 1px solid rgba(255, 255, 255, 0.15);
-
-      overflow: hidden;
-
-      box-shadow:
-        inset 0 0 10px rgba(0, 0, 0, 0.5);
-    }
-
-    .loader::before {
-      content: "";
-
-      display: block;
-
-      width: 48%;
-      height: 100%;
-
-      border-radius: 50px;
-
-      background: linear-gradient(
-        90deg,
-        #1b1bd5,
-        #3b72ff
-      );
-
-      box-shadow:
-        0 0 15px rgba(255, 38, 145, 0.8),
-        0 0 30px rgba(255, 38, 145, 0.35);
-
-      animation: loading 2.2s ease-in-out infinite;
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes loading {
-      0% {
-        transform: translateX(-110%);
-      }
-
-      50% {
-        transform: translateX(100%);
-      }
-
-      100% {
-        transform: translateX(210%);
-      }
-    }
-
-    @keyframes floatGlow {
-      from {
-        transform: translate(0, 0);
-      }
-
-      to {
-        transform: translate(100px, 70px);
-      }
-    }
-
-    @keyframes floatGlow2 {
-      from {
-        transform: translate(0, 0);
-      }
-
-      to {
-        transform: translate(-80px, -60px);
-      }
-    }
-
-    /* Mobile */
-    @media (max-width: 600px) {
-
-      .brand {
-        letter-spacing: -1.5px;
-      }
-
-      .status {
-        letter-spacing: 4px;
-        margin-top: 18px;
-      }
-
-      .status-wrapper {
-        gap: 12px;
-      }
-
-      .line {
-        width: 35px;
-      }
-
-      .loader {
-        margin-top: 32px;
-      }
-    }
-
-    /* Reduce animations for accessibility */
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 
 <body>
 
   <main class="container">
 
-    <h1 class="brand">
-      Berry Que Cab
-    </h1>
+    <img src="logo.jpeg" alt="Berry Que Cab" class="logo-mark">
+
+    <h1 class="brand">Berry Que Cab</h1>
 
     <div class="status-wrapper">
-
       <span class="line"></span>
-
-      <p class="status">
-        Work In Progress
-      </p>
-
+      <p class="status">Launching Soon</p>
       <span class="line right"></span>
-
     </div>
+
+    <p class="tagline">Vadodara's most trusted cab service — our new site is almost ready.<br>For bookings right now, reach us directly below.</p>
 
     <div class="loader"></div>
 
+    <div class="contact-row">
+      <a href="tel:+919574456015" class="contact-pill"><i class="fas fa-phone"></i> 95744 56015</a>
+      <a href="https://wa.me/919574456015?text=Hello%20Berry%20Que%20Cab,%20I%20want%20cab%20service.%20Please%20share%20details." target="_blank" class="contact-pill"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="mailto:berryquecab@gmail.com" class="contact-pill"><i class="fas fa-envelope"></i> Email</a>
+      <a href="https://www.instagram.com/berryquecab/" target="_blank" class="contact-pill"><i class="fab fa-instagram"></i> Instagram</a>
+    </div>
+
   </main>
+
+  <div class="footer-note">© 2026 Berry Que Cab · Vadodara, Gujarat</div>
 
 </body>
 </html>
